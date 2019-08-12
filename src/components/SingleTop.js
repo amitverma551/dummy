@@ -10,32 +10,26 @@ class SingleTop extends Component{
     }
 
 componentDidMount(){
-    var data = require('../json/1.json');
-    let promise = new Promise(function(resolve, reject) {
-       if(data.status == 200){
-           resolve(data.singletop);
-       }
-       })
-       promise.then(result => {
-           this.setState({
-            singleStory : this.singleStory = result
-           })
-       }).catch(error =>{
-           console.log(error);
-       }); 
+    
+       fetch('http://localhost:3000/singletop')
+          .then(response => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+          })
+          .then(response => response.json())
+          .then(item=>{
+              this.setState({
+                singleStory : item
+              })
+          })
 }
-
-
-
-
-
-
-
 
 render(){
     const topData = this.state.singleStory[0];
-    console.log(topData && topData.nid);
     return(
+        <div className="container">
         <div className="custom-promo">
             {topData &&
             <div className="custom-promo-inner">
@@ -51,6 +45,7 @@ render(){
                 </div>
             </div>
             }
+        </div>
         </div>
     )
 }

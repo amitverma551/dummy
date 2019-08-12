@@ -1,9 +1,9 @@
-export const listIsLoading = bool => ({
+const listIsLoading = bool => ({
     type: 'LIST_IS_LOADING',
     isLoading: bool
   });
 
-export const listFetchDataSuccess = items => ({
+const listFetchDataSuccess = items => ({
     type: 'LIST_FETCH_SUCCESS',
     items
   });

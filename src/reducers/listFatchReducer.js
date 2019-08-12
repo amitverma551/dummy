@@ -10,7 +10,7 @@ export const listIsLoading = (state = false, action) => {
 export const listFetchDataSuccess = (state = [], action) => {
     switch (action.type) {
           case 'LIST_FETCH_SUCCESS':
-              state = action.items;
+              state =  [...state, action.items]
           default:
               return state;
     }

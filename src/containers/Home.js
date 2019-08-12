@@ -6,8 +6,8 @@ import SingleTop from '../components/SingleTop';
 const Home = ()=>{
     return(
         <div>
-            <SingleTop />
             <TopStory />
+            <SingleTop />
             <Listing />
         </div>
     )
