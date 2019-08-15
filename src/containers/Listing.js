@@ -2,18 +2,32 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchDataApi} from '../actions/DataFatchingAction';
+import {fetchMoreDataApi} from '../actions/LoadItemActions';
 import spinner from '../assets/images/spinner.gif';
+import MoreItem from './MoreItem';
 
 class Listing extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
-            listdata: []
+            listdata: [],
+            loadItem : false,
+            moreItems: 0,
+            allNewItems : []
         }
     }
-
-    
+moreItems = ()=>{
+   this.setState({
+      moreItems : this.state.moreItems += 1
+   })
+this.props.fetchMoreDataApi(`http://localhost:3000/data${this.state.moreItems}`) 
+}
+ loadMore =()=>{
+    this.setState({
+       loadItem : this.state.loadItem = true
+    })
+ }
 componentDidMount(){
     // var data = require('../json/homepagelist.json');
     //  let promise = new Promise(function(resolve, reject) {
@@ -193,7 +207,10 @@ componentDidMount(){
       </div>
    </div>
 </div>
-<div onClick={()=>{alert("asdf")}} className="load-more stuff" id="load-more">
+
+<MoreItem loadItem={this.state.loadItem} loadCount={this.state.moreItems}/>
+
+<div onClick={this.moreItems} className="load-more stuff" id="load-more">
         <div className="load-more-label" style={{
         "width": "307px",
         "padding": "10px",
@@ -212,7 +229,8 @@ const mapStateToProps = state => {
   };
 
 const mapDispatchToProps = dispatch => ({
-    fetchDataApi: url => dispatch(fetchDataApi(url))
+    fetchDataApi: url => dispatch(fetchDataApi(url)),
+    fetchMoreDataApi: url => dispatch(fetchMoreDataApi(url))
   });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listing);
