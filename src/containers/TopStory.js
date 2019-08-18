@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment,Component } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchDataApi} from '../actions/DataFatchingAction';
@@ -13,26 +13,13 @@ class TopStory extends Component{
     }
 
     componentDidMount(){
-        // var data = require('../json/1.json');
-        // let promise = new Promise(function(resolve, reject) {
-        //    if(data.status == 200){
-        //        resolve(data.topfile);
-        //    }
-        //    })
-        //    promise.then(result => {
-        //        this.setState({
-        //            listdata : this.listdata = result
-        //        })
-        //    }).catch(error =>{
-        //        console.log(error);
-        //    });
-        
      this.props.fetchDataApi('http://localhost:3000/topfile');
     }
 
     render(){
         const data = this.props.data[0];
         return(
+        <Fragment>
         <div className="top-pathing" data-tracking-id="recirc-top-tout">
         <div className="top-pathing-inner">
             {
@@ -60,6 +47,12 @@ class TopStory extends Component{
             }
             </div>
         </div>
+        <div className="leaderboard-ad " style={{'display': 'block'}}>
+        <div className="ad-container" id="gpt-leaderboard-ad">
+          <img src="https://secure-ds.serving-sys.com/resources/PROD/html5/27713/20190808/1074850391/47444052137753348/iframe/728x90.jpg" />
+        </div>
+      </div>
+      </Fragment>
        )
     }
 }

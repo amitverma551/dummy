@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchDataApi} from '../actions/DataFatchingAction';
@@ -21,7 +21,8 @@ moreItems = ()=>{
    this.setState({
       moreItems : this.state.moreItems += 1
    })
-this.props.fetchMoreDataApi(`http://localhost:3000/data${this.state.moreItems}`) 
+this.props.fetchMoreDataApi(`http://localhost:3000/data${this.state.moreItems}`)
+console.log(window.location.pathname); 
 }
  loadMore =()=>{
     this.setState({
@@ -29,18 +30,6 @@ this.props.fetchMoreDataApi(`http://localhost:3000/data${this.state.moreItems}`)
     })
  }
 componentDidMount(){
-    // var data = require('../json/homepagelist.json');
-    //  let promise = new Promise(function(resolve, reject) {
-    //     if(data.status == 200){
-    //         resolve(data.response);
-    //     }
-    //     }).then(result => {
-    //         this.setState({
-    //             listdata : this.listdata = result
-    //         })
-    //     }).catch(error =>{
-    //         console.log(error);
-    //     });
     this.props.fetchDataApi('http://localhost:3000/data');
 } 
 
@@ -48,7 +37,7 @@ componentDidMount(){
      const data = this.props.data[1];
      const loading = this.props.loading;
       return(
-            <div className="feed feed-list">
+            <Fragment>
             {
                 loading ?
                 <div className="loader"><img src={spinner} /></div>:
@@ -217,7 +206,7 @@ componentDidMount(){
         "color": "#000",
         "top": "20px"}}>Load more stories</div>
     </div>
-        </div>
+    </Fragment>
       )
   }
 }

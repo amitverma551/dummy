@@ -3,10 +3,10 @@ import '../css/beauty.css';
 import TopStory from './TopStory';
 import StoryLoop from './StoryLoop';
 import {connect} from 'react-redux';
-import {fetchBeautyData} from '../actions/DataFatchingAction';
+import {RelationshipsDataApi} from '../actions/DataFatchingAction';
 import spinner from '../assets/images/spinner.gif';
 
-class Beauty extends Component{
+class Relationships extends Component{
 
     constructor(props){
         super(props)
@@ -16,7 +16,7 @@ class Beauty extends Component{
     }
 
     componentDidMount(){
-     this.props.BeautyApi('http://localhost:3000/beauty');
+     this.props.RelationshipsApi('http://localhost:3000/relationships');
     }
     
     render(){
@@ -38,13 +38,13 @@ class Beauty extends Component{
 
 const mapStateToProps = state => {
     return {
-        data : state.BeautylistFetchDataSuccess,
+        data : state.RelationshipslistFetchDataSuccess,
         IsLoad : state.listIsLoading
     }
   };
 
 const mapDispatchToProps = dispatch => ({
-    BeautyApi: url => dispatch(fetchBeautyData(url))
+    RelationshipsApi: url => dispatch(RelationshipsDataApi(url))
   });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Beauty);
+export default connect(mapStateToProps, mapDispatchToProps)(Relationships);

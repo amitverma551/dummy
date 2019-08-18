@@ -10,7 +10,6 @@ class SideNav extends Component{
     }
     render(){
     return (
-        
         <nav className='sidepanel'>
             <span className="sidepanel-close-button">
             <span className="icon icon-close01" onClick={this.closeNav}>
@@ -19,21 +18,21 @@ class SideNav extends Component{
             </span>
             <ul className="sidepanel-menu">
                 <li className="sidepanel-item">
-                    <Link to="/">Home</Link>
+                    <Link to="/" onClick={this.closeNav}>Home</Link>
             </li>
                 <li className="sidepanel-item" data-id="index + 1 ">
-                        <Link to="/beauty">Beauty</Link>
+                        <Link to="/beauty" onClick={this.closeNav}>Beauty</Link>
                 </li><li className="sidepanel-item" data-id="index + 1 ">
-                        <Link to="/celebrity">Celebrity</Link>
+                        <Link to="/celebrity" onClick={this.closeNav}>Celebrity</Link>
                 </li><li className="sidepanel-item" data-id="index + 1 ">
-                        <Link to="/fashion">Fashion</Link>
+                        <Link to="/fashion" onClick={this.closeNav}>Fashion</Link>
                 </li><li className="sidepanel-item" data-id="index + 1 ">
-                        <Link to="/life">Life</Link>
+                        <Link to="/life" onClick={this.closeNav}>Life</Link>
                 </li><li className="sidepanel-item" data-id="index + 1 ">
-                        <Link to="/relationships">Relationships</Link>
+                        <Link to="/relationships" onClick={this.closeNav}>Relationships</Link>
                 </li>
                 <li className="sidepanel-item">
-                    <Link to="/cosmopolitan-bloggers-award-2019-nomination">Blogger Awards 2019</Link>
+                    <Link to="/cosmopolitan-bloggers-award-2019-nomination" onClick={this.closeNav}>Blogger Awards 2019</Link>
                     </li>
                 </ul>
         </nav>
