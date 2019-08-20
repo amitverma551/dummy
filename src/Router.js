@@ -36,6 +36,11 @@ const Home = Loadable({
     loader: () => import('./containers/Relationships'),
     loading: Loading
   });
+
+  const DetailPage = Loadable({
+    loader: () => import('./containers/DetailPage'),
+    loading: Loading
+  });
  
 
 const Router = () => {
@@ -44,11 +49,12 @@ const Router = () => {
           <NavbarContainer />
           <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/beauty" component={Beauty} />
-              <Route path="/celebrity" component={Celebrity} />
-              <Route path="/fashion" component={Fashion} />
-              <Route path="/life" component={Life} />
-              <Route path="/relationships" component={Relationships} />
+              <Route exact path="/beauty" component={Beauty} />
+              <Route exact path="/celebrity" component={Celebrity} />
+              <Route exact path="/fashion" component={Fashion} />
+              <Route exact path="/life" component={Life} />
+              <Route exact path="/relationships" component={Relationships} />
+              <Route path="/life/*" component={DetailPage} />
               <Route component={PageNotFound} /> 
           </Switch>
           <Footer /> 
