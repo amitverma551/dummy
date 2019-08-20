@@ -9,6 +9,9 @@ import {
     LifelistFetchDataSuccess,
     RelationshipslistFetchDataSuccess
 } from './reducers/listFatchReducer';
+import {
+    getPostId
+} from './reducers/LoadItemReducer';
 import {FetchMoreData, fetchMoreDataApi} from './reducers/LoadItemReducer';
 
 const Reducers={
@@ -20,7 +23,8 @@ const Reducers={
     CelebritylistFetchDataSuccess,
     FashionlistFetchDataSuccess,
     LifelistFetchDataSuccess,
-    RelationshipslistFetchDataSuccess
+    RelationshipslistFetchDataSuccess,
+    getPostId
 }
 
 const store = createStore(

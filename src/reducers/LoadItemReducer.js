@@ -15,3 +15,13 @@ export const fetchMoreDataApi = (state = [], action) => {
               return state;
     }
   };
+
+
+  export const getPostId = (state = [], action) => {
+    switch (action.type) {
+          case 'GET_POST_ID':
+              state =  [...state, action.postId]
+          default:
+              return state;
+    }
+  }; 

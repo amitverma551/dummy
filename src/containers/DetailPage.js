@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class DetailPage extends Component{
    render(){
        return(
-           <h1>Detail Page</h1>
+           <h1>Detail Page {this.props.getPostId}</h1>
        )
    }
 }
 
-export default DetailPage;
+const mapStateToProps = state =>{
+   return{
+      getPostId : state.getPostId
+   }
+}
+
+export default connect(mapStateToProps)(DetailPage);
