@@ -54,7 +54,11 @@ const Router = () => {
               <Route exact path="/fashion" component={Fashion} />
               <Route exact path="/life" component={Life} />
               <Route exact path="/relationships" component={Relationships} />
+              <Route path="/beauty/*" component={DetailPage} />
+              <Route path="/celebrity/*" component={DetailPage} />
+              <Route path="/fashion/*" component={DetailPage} />
               <Route path="/life/*" component={DetailPage} />
+              <Route path="/relationships/*" component={DetailPage} />
               <Route component={PageNotFound} /> 
           </Switch>
           <Footer /> 

@@ -33,6 +33,11 @@ const listFetchDataSuccess = items => ({
     items
   });
 
+  const DetailPageFetchDataSuccess = items => ({
+    type: 'DETAIL_PAGE_FETCH_SUCCESS',
+    items
+  });
+
   
 export const fetchBeautyData = url =>{
   return dispatch => {
@@ -114,6 +119,24 @@ export const RelationshipsDataApi = url =>{
      
   }
 }
+
+export const DetailPageDataApi = url =>{
+  return dispatch =>{
+    dispatch(listIsLoading(true));
+    fetch(url)
+    .then(response=>{
+      if(!response.ok ){
+        throw Error(response.statusText);
+      }else{
+        return response;
+      }
+    })
+    .then(response=>response.json())
+    .then(items=>dispatch(listIsLoading(false) && dispatch(DetailPageFetchDataSuccess(items))))
+     
+  }
+}
+
 
   export const fetchDataApi = url => {
       return dispatch => {

@@ -53,6 +53,18 @@ export const listIsLoading = (state = false, action) => {
   }
 }
 
+  export const DetailPageFetchDataSuccess = (state = {}, action) => {
+    switch (action.type) {
+          case 'DETAIL_PAGE_FETCH_SUCCESS':
+              state =  {
+                        ...state, 
+                        items: state.items = action.items
+                      }
+          default:
+              return state;
+    }
+  };
+
   export const listFetchDataSuccess = (state = [], action) => {
     switch (action.type) {
           case 'LIST_FETCH_SUCCESS':

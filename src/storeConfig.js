@@ -7,7 +7,8 @@ import {
     CelebritylistFetchDataSuccess,
     FashionlistFetchDataSuccess,
     LifelistFetchDataSuccess,
-    RelationshipslistFetchDataSuccess
+    RelationshipslistFetchDataSuccess,
+    DetailPageFetchDataSuccess
 } from './reducers/listFatchReducer';
 import {
     getPostId
@@ -24,7 +25,8 @@ const Reducers={
     FashionlistFetchDataSuccess,
     LifelistFetchDataSuccess,
     RelationshipslistFetchDataSuccess,
-    getPostId
+    getPostId,
+    DetailPageFetchDataSuccess
 }
 
 const store = createStore(
