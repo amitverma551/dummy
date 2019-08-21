@@ -17,11 +17,11 @@ class DetailPage extends Component{
       const arr = path.split("/");
       const newArr = arr.filter(x=> x != "" ? x : null);
       const catName = newArr.length > 0 ? newArr[0] : null;
-      const postId = path.match(/\a\d+\b/g);
+      const postId = path.match(/[a-z]\d+\b/g);
 
       if(Object.prototype.toString.call(postId) == "[object Array]"){
         const idString = postId.join();
-        if(idString.charAt(0) == "a"){
+        if(idString.charAt(0) == "a" || idString.charAt(0) == "g"){
            this.setState({
               postId : this.postId = idString.substr(1)
            }, () =>{this.props.apiData(`http://localhost:3000/${catName}?nid=${this.state.postId}`);})
