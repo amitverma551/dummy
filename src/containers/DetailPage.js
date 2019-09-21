@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import {DetailPageDataApi} from '../actions/DataFatchingAction';
 
 class DetailPage extends Component{
-
    constructor(){
       super()
       this.state = {
@@ -15,7 +14,7 @@ class DetailPage extends Component{
    componentDidMount(){
       const path = window.location.pathname;
       const arr = path.split("/");
-      const newArr = arr.filter(x=> x != "" ? x : null);
+      const newArr = arr.filter(x=> x !== "" ? x : null);
       const catName = newArr.length > 0 ? newArr[0] : null;
       const postId = path.match(/[a-z]\d+\b/g);
 
@@ -24,13 +23,14 @@ class DetailPage extends Component{
         if(idString.charAt(0) == "a" || idString.charAt(0) == "g"){
            this.setState({
               postId : this.postId = idString.substr(1)
-           }, () =>{this.props.apiData(`http://localhost:3000/${catName}?nid=${this.state.postId}`);})
+           }, () =>{this.props.apiData(`http://localhost:9001/api/post/${this.state.postId}`);})
         } 
       }
 
    }
    render(){
       const items = this.props.pageData.items;
+      console.log(items);
        return(
          <div className="site-content">
             
@@ -41,8 +41,8 @@ class DetailPage extends Component{
         </div>
       </div>
       <div className="content-header-inner">
-        <h1 className="content-hed standard-hed">{items && items[0].title}</h1>
-        <h2 className="content-dek standard-dek">{items && items[0].field_dek}
+        <h1 className="content-hed standard-hed">{items && items.title}</h1>
+        <h2 className="content-dek standard-dek">{items && items.field_dek}
 </h2>
       </div>
     </header>
@@ -76,37 +76,12 @@ class DetailPage extends Component{
          </div>
       </div>
       <div className="content-lede-image standard-lede-image">
-         <div className="content-lede-image-wrap"><img alt="&amp;nbsp;" src={items && items[0].image} className="ng-lazyloaded" /></div>
+         <div className="content-lede-image-wrap"><img alt="" src={items && items.field_feature_image.path} className="ng-lazyloaded" /></div>
          <p className="sfeaturedesc">Feathered dress, Dolly J, price on request; Coccinella Pumps, ₹73,500, and Rubylou Bag, ₹90,000, both Christian Louboutin; earrings, Valliyan by Nitya Arora, ₹8,000</p>
       </div>
    </div>
    <div className="article-body-content standard-body-content">
-      <div>
-         <p>Feathered dress, Dolly J, price on request; Coccinella Pumps, ₹73,500, and Rubylou Bag, ₹90,000,&nbsp;both Christian Louboutin; earrings, Valliyan by Nitya Arora, ₹8,000</p>
-         <p><img alt="1" data-entity-type="file" data-entity-uuid="f0fa20cf-9d18-44b1-b3a9-49630a0d99d5" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/_MG_0130.jpg?oLM0eBPYcQW_.LTgVFw5oS4p_dyv1y6j" /></p>
-         <p>Rainbow pouf sleeve dress, Amit Aggarwal, ₹1,25,000; hairclip, H&amp;M, ₹799; Coccinella Pumps, Christian Louboutin, ₹73,500</p>
-         <p>&nbsp;</p>
-         <p><img alt="2" data-entity-type="file" data-entity-uuid="81ee3b9c-ff3b-426b-8b48-4b00cc7a193c" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/2019-07-08-0002.jpg?ECKpRKmqrj7EDDWHIhNYGCtIC0JBZMQ5" /></p>
-         <p>Feathered gown, Dolly J, ₹60,000; pumps, Charles &amp; Keith, ₹6,999</p>
-         <p>&nbsp;</p>
-         <p><img alt="3" data-entity-type="file" data-entity-uuid="0aaf08de-af77-4218-a32c-03c6ed127249" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/2019-07-08-0004.jpg?_bSFSGnjEF2BuAKsW3rnXBT5o15QVyIz" /></p>
-         <p>Embellished dress, Falguni Shane Peacock, price on request; gown, Samant Chauhan, ₹55,000</p>
-         <p>&nbsp;</p>
-         <p><img alt="4" data-entity-type="file" data-entity-uuid="8300d08d-fca6-419c-8d62-3a5f24066ed1" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/_MG_9826.jpg?NdfRyhfK7Bt.HagMkF4Qpb1B3iUs.Qu5" /></p>
-         <p>Tulle gown, Gauri &amp; Nainika, ₹1,40,000; hairclip, H&amp;M, ₹799; Link Me Up Necklace, Zariin, ₹9,500; yellow necklace, H&amp;M, ₹699</p>
-         <p>&nbsp;</p>
-         <p><img alt="5" data-entity-type="file" data-entity-uuid="572be395-d265-4cfb-a63e-a308b6af6239" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/_MG_0462.jpg?BQLYAos.68c0OJ2Y5ZEJQtDdz.Pj50ln" /></p>
-         <p>Chromatic sheer gown, Rahul Mishra, ₹1,49,500; top, H&amp;M Conscious Collection, ₹2,999; Pria Belt, Deepa Gurnani, ₹34,346; gloves, Rajdeep Ranawat, ₹16,000</p>
-         <p>&nbsp;</p>
-         <p><img alt="6" data-entity-type="file" data-entity-uuid="a0597c05-8d7b-42dd-a29f-a17e1cf2b92a" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/2019-07-08-0009.jpg?kJXxlHVQCbZGdAR3ux01yVwecT0NH6AG" /></p>
-         <p>Corset, Nitin Bal Chauhan, ₹16,500; collared embroidered gown, Samant Chauhan, ₹57,000; orange turtle neck, H&amp;M Conscious Collection, ₹1,499; Clara Nodo Pumps, Christian Louboutin, ₹73,500; Deja Earrings, Deepa Gurnani, ₹30,926</p>
-         <p>&nbsp;</p>
-         <p><img alt="7" data-entity-type="file" data-entity-uuid="d4655adb-66b8-4b0a-bb8d-951c88ab2148" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/2019-07-08-0012.jpg?lfVD7De9T3ZWcB7w8VijQ9Rj2tZR8Ss6" /></p>
-         <p>Polka-dot gown, Gauri &amp; Nainika, ₹82,000; yellow necklace, H&amp;M, ₹699; Pearl Them Pretty Necklace, Zariin, ₹5,250; wrinkle-effect metallic bag, ₹5,999, and pumps, ₹5,999, both Charles &amp; Keith; embellished stockings, Kerry Parker, ₹3,642</p>
-         <p>&nbsp;</p>
-         <p><img alt="8" data-entity-type="file" data-entity-uuid="bd5ebf56-d82c-4fd6-98b4-d04e013564aa" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/inline-images/_MG_0231.jpg?vlf6mmmV58d_L7y6nBg7H.G8tz2b3MlK" /></p>
-         <p>Feathered dress and pleated skirt, both Not So Serious by Pallavi Mohan, both price on request; Bammental Bag, Call It Spring, ₹2,403; Mrunaal Earrings, Aadikara, ₹3,500</p>
-         <p>&nbsp;</p>
+       <div dangerouslySetInnerHTML={{ __html: items && items.body }}>
       </div>
    </div>
 </div>

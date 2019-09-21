@@ -2,7 +2,6 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 const StoryLoop = (props) => {
-    console.log(props)
     const data = props.data[0];
     return(
         <Fragment>
@@ -10,8 +9,8 @@ const StoryLoop = (props) => {
                 data && data.map((x, index)=>{
                     return(
                         <div key={x.nid} className="full-item">
-                            <div className={index == 0 ? "full-item full-item-with-ad bb_none": "verticalListing"}>
-                                <Link className="full-item-image item-image" to={x.path}><img alt="default_image" src={x.image} className="ng-lazyloaded" /></Link>
+                            <div className={index === 0 ? "full-item full-item-with-ad bb_none": "verticalListing"}>
+                                <Link className="full-item-image item-image" to={x.path}><img alt="default_image" src={x.field_feature_image.path} className="ng-lazyloaded" /></Link>
                                 <div className="full-item-metadata">
                                     <Link className="item-parent-link full-item-parent-link" to={x.field_section_url}>{x.field_section}</Link>
                                     <div className="publish-date full-item-publish-date js-date" data-format="MMM D, YYYY" data-publish-date="homelist.created">{x.created}</div>

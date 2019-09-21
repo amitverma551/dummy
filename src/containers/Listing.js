@@ -22,7 +22,6 @@ moreItems = ()=>{
       moreItems : this.state.moreItems += 1
    })
 this.props.fetchMoreDataApi(`http://localhost:3000/data${this.state.moreItems}`)
-console.log(window.location.pathname); 
 }
  loadMore =()=>{
     this.setState({

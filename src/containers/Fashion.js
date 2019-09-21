@@ -4,11 +4,12 @@ import {fashionDataApi} from '../actions/DataFatchingAction';
 import TopStory from './TopStory';
 import StoryLoop from './StoryLoop';
 import spinner from '../assets/images/spinner.gif';
+import {API_HOSTNAME} from '../constants';
 
 class Fashion extends Component{
 
     componentDidMount(){
-       this.props.fatchData("http://localhost:3000/fashion") 
+       this.props.fatchData(`${API_HOSTNAME}/api/posts/fashion`) 
     }
     
     render(){

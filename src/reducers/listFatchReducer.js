@@ -73,3 +73,12 @@ export const listIsLoading = (state = false, action) => {
               return state;
     }
   };
+
+  export const SearchTxtSuccess = (state = [], action) => {
+    switch (action.type) {
+          case 'SEARCH_TEXT_SUCCESS':
+             state =  [action.items]
+          default:
+              return state;
+    }
+  }; 

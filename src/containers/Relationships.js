@@ -5,6 +5,8 @@ import StoryLoop from './StoryLoop';
 import {connect} from 'react-redux';
 import {RelationshipsDataApi} from '../actions/DataFatchingAction';
 import spinner from '../assets/images/spinner.gif';
+import {API_HOSTNAME} from '../constants';
+
 
 class Relationships extends Component{
 
@@ -16,7 +18,7 @@ class Relationships extends Component{
     }
 
     componentDidMount(){
-     this.props.RelationshipsApi('http://localhost:3000/relationships');
+     this.props.RelationshipsApi(`${API_HOSTNAME}/api/posts/relationships`);
     }
     
     render(){

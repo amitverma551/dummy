@@ -37,6 +37,11 @@ const Home = Loadable({
     loading: Loading
   });
 
+  const searchResult = Loadable({
+    loader: () => import('./containers/searchResult'),
+    loading: Loading
+  });
+
   const DetailPage = Loadable({
     loader: () => import('./containers/DetailPage'),
     loading: Loading
@@ -54,6 +59,7 @@ const Router = () => {
               <Route exact path="/fashion" component={Fashion} />
               <Route exact path="/life" component={Life} />
               <Route exact path="/relationships" component={Relationships} />
+              <Route exact path="/search" component={searchResult} />
               <Route path="/beauty/*" component={DetailPage} />
               <Route path="/celebrity/*" component={DetailPage} />
               <Route path="/fashion/*" component={DetailPage} />

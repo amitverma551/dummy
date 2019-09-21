@@ -4,11 +4,12 @@ import {lifeDataApi} from '../actions/DataFatchingAction';
 import TopStory from './TopStory';
 import StoryLoop from './StoryLoop';
 import spinner from '../assets/images/spinner.gif';
+import {API_HOSTNAME} from '../constants';
 
 class Life extends Component{
 
     componentDidMount(){
-       this.props.fatchData("http://localhost:3000/life") 
+       this.props.fatchData(`${API_HOSTNAME}/api/posts/life`) 
     }
     
     render(){

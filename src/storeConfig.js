@@ -8,7 +8,8 @@ import {
     FashionlistFetchDataSuccess,
     LifelistFetchDataSuccess,
     RelationshipslistFetchDataSuccess,
-    DetailPageFetchDataSuccess
+    DetailPageFetchDataSuccess,
+    SearchTxtSuccess
 } from './reducers/listFatchReducer';
 import {
     getPostId
@@ -26,7 +27,8 @@ const Reducers={
     LifelistFetchDataSuccess,
     RelationshipslistFetchDataSuccess,
     getPostId,
-    DetailPageFetchDataSuccess
+    DetailPageFetchDataSuccess,
+    SearchTxtSuccess
 }
 
 const store = createStore(

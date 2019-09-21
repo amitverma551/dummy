@@ -9,8 +9,8 @@ const FetchMoreData = items => ({
   });
   
   export const fetchMoreDataApi = url => {
+    console.log(url);
       return dispatch => {
-        dispatch(MoreItemIsLoading(true));
         fetch(url)
           .then(response => {
             if (!response.ok) {
@@ -19,6 +19,6 @@ const FetchMoreData = items => ({
             return response;
           })
           .then(response => response.json())
-          .then(items => dispatch(MoreItemIsLoading(false)) && dispatch(FetchMoreData(items)))
+          .then(items => dispatch(FetchMoreData(items)))
       }
     };

@@ -5,6 +5,7 @@ import StoryLoop from './StoryLoop';
 import {connect} from 'react-redux';
 import {fetchCelebrityData} from '../actions/DataFatchingAction';
 import spinner from '../assets/images/spinner.gif';
+import {API_HOSTNAME} from '../constants';
 
 class Celebrity extends Component{
 
@@ -15,7 +16,7 @@ class Celebrity extends Component{
         }
     }
     componentDidMount(){
-    this.props.ArchiveApi('http://localhost:3000/celebrity');
+    this.props.ArchiveApi(`${API_HOSTNAME}/api/posts/celebrity`);
     }
     
     render(){

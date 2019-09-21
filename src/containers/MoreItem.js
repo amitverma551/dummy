@@ -1,44 +1,29 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import spinner from '../assets/images/spinner.gif';
 
 class MoreItem extends Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state ={
             mergedArray: []
         }
     }
-    // shouldComponentUpdate(nextProps){
-    //     if(this.props.data != nextProps.data){
-    //         if(this.props.data.length == 0){
-    //            this.setState({
-    //            mergedArray : this.state.mergedArray = this.props.data 
-    //            }) 
-    //        }
-    //         this.setState({
-    //            mergedArray : this.state.mergedArray = [].concat.apply([], this.props.data)
-    //         })
-    //        return true
-    //     }
-    //     return false
-    //    }
     render(){
-        const data = this.props.data[this.props.loadCount - 1];
+        const data = this.props.moreData;
         const loading = this.props.loading;
         return(
           <Fragment>
               {
                 loading ?
                 <div className="loader"><img src={spinner} /></div>:
-                data && data.map(x=>{
+                data && data.map((x, index)=>{
                   return( 
-                  <div key={x.nid} className="full-item ">
+                  <div key={index} className="full-item ">
                     <div className="verticalListing">
                         <Link className="full-item-image item-image" to={`/beauty${x.path}`}>
-                            <img alt="default_image" src={x.image} className="ng-lazyloaded" />
+                            <img alt="default_image" src={x.field_feature_image.path} className="ng-lazyloaded" />
                         </Link>
                         <div className="full-item-metadata">
                             <Link className="item-parent-link full-item-parent-link" to={x.field_section_url}>
@@ -75,12 +60,4 @@ class MoreItem extends Component{
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        data : state.fetchMoreDataApi,
-        loading : state.FetchMoreData
-    }
-  };
-
-
-export default connect(mapStateToProps)(MoreItem);
+export default MoreItem;

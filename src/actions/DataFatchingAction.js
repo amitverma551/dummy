@@ -38,6 +38,11 @@ const listFetchDataSuccess = items => ({
     items
   });
 
+  const getSearchTxtSuccess = items => ({
+    type: 'SEARCH_TEXT_SUCCESS',
+    items
+  });
+
   
 export const fetchBeautyData = url =>{
   return dispatch => {
@@ -152,3 +157,18 @@ export const DetailPageDataApi = url =>{
           .then(items => dispatch(listIsLoading(false)) && dispatch(listFetchDataSuccess(items)))
       }
     };
+
+    export const getSearchQuery = url => {
+      return dispatch => {
+        dispatch(listIsLoading(true));
+        fetch(url)
+          .then(response => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+          })
+          .then(response => response.json())
+          .then(items => dispatch(listIsLoading(false)) && dispatch(getSearchTxtSuccess(items)))
+      }
+    }; 
