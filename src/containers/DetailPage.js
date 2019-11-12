@@ -2,35 +2,49 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {DetailPageDataApi} from '../actions/DataFatchingAction';
+import SideBar from '../components/SideBar';
+import { fetchMoreDataApi } from '../actions/LoadItemActions';
 
 class DetailPage extends Component{
    constructor(){
       super()
       this.state = {
-         postId : ''
+         ctName:'',
+         postId:''
       }
    }
 
-   componentDidMount(){
+   updateComp = () =>{
       const path = window.location.pathname;
       const arr = path.split("/");
       const newArr = arr.filter(x=> x !== "" ? x : null);
       const catName = newArr.length > 0 ? newArr[0] : null;
       const postId = path.match(/[a-z]\d+\b/g);
-
       if(Object.prototype.toString.call(postId) == "[object Array]"){
-        const idString = postId.join();
-        if(idString.charAt(0) == "a" || idString.charAt(0) == "g"){
-           this.setState({
-              postId : this.postId = idString.substr(1)
-           }, () =>{this.props.apiData(`http://localhost:9001/api/post/${this.state.postId}`);})
-        } 
-      }
+         var idString = postId.join();
+         if(idString.charAt(0) == "a" || idString.charAt(0) == "g"){
+          this.props.apiData('http://localhost:9001/api/post/'+idString.substr(1))
+         }
+      } 
+      this.setState({
+         ctName: this.state.ctName = catName,
+         postId : this.state.postId = idString.substr(1)
+      })
+     this.props.fetchMoreDataApi(`http://localhost:9001/api/posts/${catName}?_limit=11`);
+}
 
-   }
+componentDidMount(){
+   this.updateComp()
+}
+
+componentDidUpdate(prevProps) {
+   if (this.props.location !== prevProps.location) {
+      this.updateComp();
+    }
+}
+   
    render(){
       const items = this.props.pageData.items;
-      console.log(items);
        return(
          <div className="site-content">
             
@@ -85,152 +99,8 @@ class DetailPage extends Component{
       </div>
    </div>
 </div>
-<div className="recirculation-module active" data-tracking-id="recirc-subsection" data-tracking-label="More From Beauty">
-   <div>
-      <div className="ad-container" id="gpt-leaderboard-ad"></div>
-   </div>
-   <div className="recirculation-module-header">
-      More From 
-      <Link className="recirculation-module-feed-link" to="/fashion">
-      fashion</Link> 
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18295/pump-volume">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/_MG_0366-2X1.jpg?m6CEVWa5zQBDGvenjDmH_ZHN.IRIINKN&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18295/pump-volume">
-         <p>Pump Up the Volume !</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18275/10-ways-style-your-bold-shoulders">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/2.jpg?lBoBLjbpeR8t1eJH.4BHrBrrHcg8bz1y&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18275/10-ways-style-your-bold-shoulders">
-         <p>10 Ways To Style Your Bold Shoulders</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18291/how-smartphones-have-become-coolest-new-fashion-accessory">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/01_1200x628.jpg?TJNQYY5_3.xkO1rTvXdwwmu1XsnbS7WV&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18291/how-smartphones-have-become-coolest-new-fashion-accessory">
-         <p>How Smartphones Have Become the Coolest New Fashion Accessory</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18276/10-different-degrees-animal-print-trend">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/2%20x%201.jpg?WT1CP8sPv2iDBPnQequw1fMDeXQn8hV4&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18276/10-different-degrees-animal-print-trend">
-         <p>10 Different Degrees of the Animal Print Trend</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18258/10-ways-style-polka-dots-season">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/On%20the%20Dot2x1.jpg?jdjIyg2pPBCbEqKZs0r9uXMZzq6y5GZ2&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18258/10-ways-style-polka-dots-season">
-         <p>10 Ways To Style Polka Dots This Season</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18259/all-you-need-know-about-summers-hottest-trend-paisley">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/Screen%20Shot%202019-08-13%20at%206.53.14%20pm.png?CfeIgALfQAIWKADzlsV_tGNSxih_Dpkr&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18259/all-you-need-know-about-summers-hottest-trend-paisley">
-         <p> This Is All That You Need To Know About This Summer's Hottest Trend- Paisley</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18277/10-check-print-co-ords-we-are-crushing-atm">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/2%20x%201_2.jpg?s5CXBQqOEqUMblbgR8EGipSuZ5nLgCYK&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18277/10-check-print-co-ords-we-are-crushing-atm">
-         <p>10 Check Print Co-ords We are Crushing on ATM</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18274/10-ways-wear-sheer-trend-style">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/1.jpg?QNzQyTmad5fbXr1_gQ6bFlW9VSnjChGK&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18274/10-ways-wear-sheer-trend-style">
-         <p>10 Ways To Wear The Sheer Trend With Style</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/g18163/8-ways-you-can-play-pop-colours-and-chic-styles-season">
-            <div className="photo-icon"><i className="icon link-icon icon-gallery icon-xs icon-content-type"></i></div>
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/Fashion_Website-Serbia.gif?deczGmH03nMHeZwJuEx5P6Cw294Qlb7A&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/g18163/8-ways-you-can-play-pop-colours-and-chic-styles-season">
-         <p> 8 Ways You Can Play With Pop Colours and Chic Styles This Season</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/a18231/these-zara-boots-are-all-over-instagram">
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/Screen%20Shot%202019-08-09%20at%206.01.28%20pm.png?HtkTIZAbKp_KIkcYedmPvgcqyhb_V4aE&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/a18231/these-zara-boots-are-all-over-instagram">
-         <p>These Zara Boots Are All Over Instagram</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/g18100/7-adorable-dogs-show-you-most-coveted-jewels-moment">
-            <div className="photo-icon"><i className="icon link-icon icon-gallery icon-xs icon-content-type"></i></div>
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-07/Alxdog%201a_2x1.jpg?7JUQR0buebqk1NPtQkGI4dF3nsz7uokN&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/g18100/7-adorable-dogs-show-you-most-coveted-jewels-moment">
-         <p>7 Adorable Dogs Show You the Most-Coveted Jewels of the Moment</p>
-         </Link>
-      </div>
-   </div>
-   <div className="recirculation-module-inner">
-      <div className="simple-item recirculation-module-item">
-         <div className="recirculation-module-image">
-            <Link className="full-item-image item-image recirculation-image" to="/fashion/features/g18161/21-fall-fashion-trends-you-need-start-preparing-now-because-youre-not-ready">
-            <div className="photo-icon"><i className="icon link-icon icon-gallery icon-xs icon-content-type"></i></div>
-            <img alt="default_image" src="https://akm-img-a-in.tosshub.com/sites/cosmo/sites/default/files/2019-08/fall-trends-1562095178_1.jpg?LUYfeT5ya10DxKgqe7gdnTOfxacNQnNW&amp;size=300:152" className="ng-lazyloaded" /></Link>
-         </div>
-         <Link className="item-title recirculation-module-item-title" to="/fashion/features/g18161/21-fall-fashion-trends-you-need-start-preparing-now-because-youre-not-ready">
-         <p>21 Fall Fashion Trends You Need to Start Preparing for Now, Because YOU'RE NOT READY</p>
-         </Link>
-      </div>
-   </div>
-</div>
-
+<div className="clearDetailmobile"></div>
+<SideBar catName={this.state.ctName} pId={this.state.postId}/>
 </div>
 </div>
        )
@@ -238,15 +108,15 @@ class DetailPage extends Component{
 }
 
 const mapStateToProps = state =>{
-   console.log(state);
    return{
       getPostId : state.getPostId,
-      pageData : state.DetailPageFetchDataSuccess
+      pageData : state.DetailPageFetchDataSuccess,
    }
 }
 
 const mapDispatchToProps = dispatch => ({
-   apiData: url => dispatch(DetailPageDataApi(url))
+   apiData: url => dispatch(DetailPageDataApi(url)),
+   fetchMoreDataApi: url => dispatch(fetchMoreDataApi(url))
  });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage);

@@ -3,10 +3,10 @@ import {Link, NavLink} from 'react-router-dom';
 
 const Navbar = (props)=>{
     const openNav = () => {
-        document.querySelector('.sidepanel').className +=" active";
+        document.querySelector('.sidepanel').classList.add("active");
      }
      const openSearch = () => {
-        document.querySelector('.search-overlay').className +=" active";
+        document.querySelector('.search-overlay').classList.add("active");
         document.getElementById('site-search').focus();
      }
    return(

@@ -6,17 +6,13 @@ import {connect} from 'react-redux';
 import {fetchCelebrityData} from '../actions/DataFatchingAction';
 import spinner from '../assets/images/spinner.gif';
 import {API_HOSTNAME} from '../constants';
+import MoreItem from './MoreItem';
 
 class Celebrity extends Component{
 
-    constructor(props){
-        super(props)
-        this.state={
-            data:[]
-        }
-    }
+    catName = 'celebrity';
     componentDidMount(){
-    this.props.ArchiveApi(`${API_HOSTNAME}/api/posts/celebrity`);
+    this.props.ArchiveApi(`${API_HOSTNAME}/api/posts/${this.catName}`);
     }
     
     render(){
@@ -30,6 +26,7 @@ class Celebrity extends Component{
                 null
             }
             <StoryLoop data={this.props.data} />
+            <MoreItem catName={this.catName}/>
         </div>
     </Fragment>   
     )

@@ -6,7 +6,6 @@ import Search from '../containers/Search';
 import '../css/style.css';
 
 const NavbarContainer = (props) =>{
-
   return(
       <Fragment>
             <div  className="mainheader">

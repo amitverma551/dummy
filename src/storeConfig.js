@@ -14,12 +14,13 @@ import {
 import {
     getPostId
 } from './reducers/LoadItemReducer';
-import {FetchMoreData, fetchMoreDataApi} from './reducers/LoadItemReducer';
+import {FetchMoreData, fetchMoreDataApi, fetchLoadMoreDataApi} from './reducers/LoadItemReducer';
 
 const Reducers={
     listFetchDataSuccess,
     listIsLoading,
     fetchMoreDataApi,
+    fetchLoadMoreDataApi,
     FetchMoreData,
     BeautylistFetchDataSuccess,
     CelebritylistFetchDataSuccess,
@@ -30,7 +31,6 @@ const Reducers={
     DetailPageFetchDataSuccess,
     SearchTxtSuccess
 }
-
 const store = createStore(
     combineReducers(Reducers),
     applyMiddleware(thunk)

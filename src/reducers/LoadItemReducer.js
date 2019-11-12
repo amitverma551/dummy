@@ -10,7 +10,19 @@ export const FetchMoreData = (state = false, action) => {
 export const fetchMoreDataApi = (state = [], action) => {
     switch (action.type) {
           case 'More_LIST_FETCH_SUCCESS':
-              state =  [...state, action.items]
+              state = [action.items];
+          default:
+              return state;
+    }
+  };
+
+
+  export const fetchLoadMoreDataApi = (state = [], action) => {
+    switch (action.type) {
+          case 'ROOT_REDUCER':
+            return state = [];
+          case 'LOAD_MORE_DATA':
+            return state = state.concat(action.items);
           default:
               return state;
     }

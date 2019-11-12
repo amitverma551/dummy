@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {rootReducer} from '../actions/LoadItemActions';
 
 class ScrollToTop extends Component {
 
     componentDidUpdate(prevProps) {
       if (this.props.location !== prevProps.location) {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
+        this.props.rootReducer();
       }
     }
   
@@ -13,5 +16,10 @@ class ScrollToTop extends Component {
       return this.props.children
     }
   }
-  
-  export default withRouter(ScrollToTop);
+
+
+  const mapDispatchToProps = dispatch => ({
+    rootReducer: () => dispatch(rootReducer())
+  });
+
+export default connect(null, mapDispatchToProps)(withRouter(ScrollToTop));

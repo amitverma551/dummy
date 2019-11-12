@@ -5,11 +5,12 @@ import TopStory from './TopStory';
 import StoryLoop from './StoryLoop';
 import spinner from '../assets/images/spinner.gif';
 import {API_HOSTNAME} from '../constants';
+import MoreItem from './MoreItem';
 
 class Life extends Component{
-
+    catName = 'life';
     componentDidMount(){
-       this.props.fatchData(`${API_HOSTNAME}/api/posts/life`) 
+       this.props.fatchData(`${API_HOSTNAME}/api/posts/${this.catName}`) 
     }
     
     render(){
@@ -18,11 +19,12 @@ class Life extends Component{
             <Fragment>
                <TopStory />
                 <div className="feed feed-list">
-                    {   loading ?
+                    {/* {   loading ?
                         <div className="loader"><img src={spinner} /></div>: 
                         null
-                    }
+                    } */}
                     <StoryLoop data={this.props.data} />
+                    <MoreItem catName={this.catName}/>
                 </div>
             </Fragment>
         )

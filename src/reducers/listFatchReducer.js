@@ -9,8 +9,10 @@ export const listIsLoading = (state = false, action) => {
 
   export const BeautylistFetchDataSuccess = (state = [], action) => {
     switch (action.type) {
+          case 'ROOT_REDUCER':
+             return state = [];
           case 'BEAUTY_LIST_FETCH_SUCCESS':
-              state =  [...state, action.items]
+              return state =  [...state, action.items]
           default:
               return state;
     }

@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var posts = require('./routes/videos');
 
-var port = 9001;
+var port = process.env.PORT || 3000; // process.env.PORT for heroku or online node server. this line does not effect the application.
 var app = express();
 
 app.set('views', __dirname + '/views');

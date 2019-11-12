@@ -1,17 +1,26 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import spinner from '../assets/images/spinner.gif';
+import {fetchLoadMoreData} from '../actions/LoadItemActions';
+import {API_HOSTNAME} from '../constants';
 
 class MoreItem extends Component{
-
     constructor(props){
         super(props)
-        this.state ={
-            mergedArray: []
+        this.state = {
+            catName : this.props.catName
         }
     }
+
+    inc = 2;
+    loadItem = ()=>{
+        this.props.fetchLoadMoreData(`${API_HOSTNAME}/api/posts/${this.state.catName}?_page=${this.inc}`);
+        this.inc++;
+    }
+
     render(){
-        const data = this.props.moreData;
+        const data = this.props.moredt;
         const loading = this.props.loading;
         return(
           <Fragment>
@@ -55,9 +64,27 @@ class MoreItem extends Component{
                   )
               })
             }
+            <div onClick={this.loadItem} className="load-more stuff" id="load-more">
+                    <div className="load-more-label" style={{
+                    "width": "307px",
+                    "padding": "10px",
+                    "color": "#000",
+                    "top": "20px"}}>Load more stories</div>
+            </div>
           </Fragment>  
         )
     }
 }
 
-export default MoreItem;
+
+const mapStateToProps = state => {
+    return {
+        moredt : state.fetchLoadMoreDataApi,
+    }
+  };
+
+const mapDispatchToProps = dispatch => ({
+    fetchLoadMoreData: url => dispatch(fetchLoadMoreData(url))
+  });
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoreItem);

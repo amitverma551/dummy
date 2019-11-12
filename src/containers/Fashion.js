@@ -3,26 +3,23 @@ import {connect} from 'react-redux';
 import {fashionDataApi} from '../actions/DataFatchingAction';
 import TopStory from './TopStory';
 import StoryLoop from './StoryLoop';
-import spinner from '../assets/images/spinner.gif';
 import {API_HOSTNAME} from '../constants';
+import MoreItem from './MoreItem';
 
 class Fashion extends Component{
 
+    catName = 'fashion';
     componentDidMount(){
-       this.props.fatchData(`${API_HOSTNAME}/api/posts/fashion`) 
+       this.props.fatchData(`${API_HOSTNAME}/api/posts/${this.catName}`) 
     }
     
     render(){
-        const loading = this.props.IsLoad;
         return(
             <Fragment>
                 <TopStory />
                 <div className="feed feed-list">
-                    {   loading ?
-                        <div className="loader"><img src={spinner} /></div>: 
-                        null
-                    }
                     <StoryLoop data={this.props.data} />
+                    <MoreItem catName={this.catName}/>
                 </div>
             </Fragment>
         )

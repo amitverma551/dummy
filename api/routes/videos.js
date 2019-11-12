@@ -3,7 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Post = require('../models/story');
 
-var db = "mongodb://localhost:27017/cosmodb";
+//var db = "mongodb://localhost:27017/cosmodb";
+var db = "mongodb://admin:india123@ds245018.mlab.com:45018/cosmodb";
 mongoose.connect(db, function(err){
     if(err){
         console.error("Error! " + err);
@@ -148,6 +149,9 @@ router.get('/posts/:id', function(req, res, next){
 
 router.get('/search', function(req, res, next){
     const srch_query = req.query.q;
+    const lmt = parseInt(req.query._limit);
+    const resPerPage = lmt || 10;
+    const page = parseInt(req.query._page) || 1;
     console.log('Get request for a single post');
     Post.find({$text: {$search: srch_query}},{
         "nid" : 1,
@@ -169,7 +173,7 @@ router.get('/search', function(req, res, next){
         "userData_node":1,
         "userData":1,
         "field_feature_image":1
-    })
+    }).skip((resPerPage * page) - resPerPage).limit(resPerPage)
     .exec(function(err, posts){
         if(err){
             res.send("Error retrieving post");

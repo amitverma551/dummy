@@ -17,7 +17,7 @@ class Search extends Component{
     }
 
     closeSearch = () => {
-        document.querySelector('.search-overlay').classList="search-overlay";
+        document.querySelector('.search-overlay').classList.remove("active");
         document.getElementById('site-search').blur();
         this.setState({
             redirect : this.state.redirect = false

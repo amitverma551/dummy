@@ -6,7 +6,7 @@ class SideNav extends Component{
        super(props);
     }
     closeNav(){
-        document.querySelector('.sidepanel').classList="sidepanel";
+        document.querySelector('.sidepanel').classList.remove("active");
     }
     render(){
     return (
