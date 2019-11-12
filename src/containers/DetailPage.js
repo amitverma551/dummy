@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {API_HOSTNAME} from '../constants';
 import {DetailPageDataApi} from '../actions/DataFatchingAction';
 import SideBar from '../components/SideBar';
 import { fetchMoreDataApi } from '../actions/LoadItemActions';
@@ -23,14 +24,14 @@ class DetailPage extends Component{
       if(Object.prototype.toString.call(postId) == "[object Array]"){
          var idString = postId.join();
          if(idString.charAt(0) == "a" || idString.charAt(0) == "g"){
-          this.props.apiData('http://localhost:9001/api/post/'+idString.substr(1))
+          this.props.apiData(`${API_HOSTNAME}/api/post/`+idString.substr(1))
          }
       } 
       this.setState({
          ctName: this.state.ctName = catName,
          postId : this.state.postId = idString.substr(1)
       })
-     this.props.fetchMoreDataApi(`http://localhost:9001/api/posts/${catName}?_limit=11`);
+     this.props.fetchMoreDataApi(`${API_HOSTNAME}/api/posts/${catName}?_limit=11`);
 }
 
 componentDidMount(){
