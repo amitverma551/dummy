@@ -29,6 +29,10 @@
       max-width: 1140px;
     }
   }
+header{
+  background:url(../assets/images/header-bg.jpg) center center no-repeat;
+  background-size:cover;
+}
 .icon,.newsletter-submit,body,html{-webkit-font-smoothing:antialiased}
 .icon,.newsletter-submit,.sidepanel-item.has-children>a:before{text-rendering:auto;-moz-osx-font-smoothing:grayscale;vertical-align:middle}
 .footer-legal-menu,.footer-menu,.location-right-side-panel .location-choice-sidepanel-menu,.nav-menu,.nav-submenu,.sidepanel-menu,.sidepanel-submenu{list-style:none}
@@ -37,7 +41,7 @@ body{font:1.0625rem/1.8 "Helvetica Neue",Helvetica,Arial,sans-serif;color:#000;l
 img{max-width:100%}
 .feed-list{position:relative}
 .feed-list .full-item-metadata{margin:0 0 15px;padding-bottom:0;border-bottom:1px dotted #bebebe;display:none}
-.full-item-metadata a{font-weight:700;color:#ec008c}
+.full-item-metadata a{font-weight:700;color:#d80023}
 .verticalListing{padding-top:27px;clear:both;padding-top:40px}
 .mustread{float:left;width:100%;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .mustread .mhead h2{float:left;width:100%;background:url(https://smedia2.intoday.in/cosmo/images/bg-stripes-black.png);font-size:34px;line-height:40px;color:#000;text-align:center;text-transform:uppercase;margin:0;padding:15px 0}
@@ -390,6 +394,10 @@ dfn,em,i,q{font-style:italic}
 .story-breaker:hover .story-breaker-title{color:#e9328c}
 }
 .footer-logo a{display:block;font-size:0}
+.footer-logo img{
+  max-width: 140px;
+}
+.footer-social-menu{display: none;}
 .footer-logo svg{max-width:11.875rem;max-height:2.1875rem}
 .footer-social-menu-item:last-child{margin-right:0}
 .footer-social-menu-item .icon,.footer-social-menu-item .newsletter-submit{font-size:1.063rem}
@@ -588,6 +596,7 @@ body,h1,h2{margin:0}
 .marquee-overlay{position:absolute;width:100%;height:100%}
 .marquee-inner{display:block;position:relative;height:100%}
 .marquee-logo svg{width:100%}
+.marquee-logo a{text-align: center;}
 .marquee-logo-link{display:block;line-height:0}
 .marquee-list-header-body{display:none}
 @media only screen and (min-width:40.625rem) {
@@ -1303,7 +1312,7 @@ img.click-to-play-animated.active,picture.click-to-play-animated.active{display:
 }
 .list-breaker-ad{padding-bottom:2rem}
 .site-content{overflow-x:hidden;position:relative}
-.sidepanel{background-color:#E9328C;transform:translateX(-20rem);position:fixed;top:0;width:20rem;height:100%;overflow-y:scroll;z-index:5999997}
+.sidepanel{background-color:#d80023;transform:translateX(-20rem);position:fixed;top:0;width:20rem;height:100%;overflow-y:scroll;z-index:5999997}
 .content-lede-image-wrap,.item-image{overflow:hidden}
 .sidepanel.active{transform:translateX(0)}
 .sidepanel-menu,.sidepanel-submenu{margin:0}
@@ -1570,7 +1579,7 @@ input[type=search].search-input{-webkit-appearance:none;-webkit-border-radius:0;
 .nav-menu-link:hover .nav-menu{display:none!important}
 .nav-menu-link:hover .nav-menu-social .nav-submenu{display:block!important}
 .ng-failed-lazyloaded{height:100%!important}
-.icon-content-type{position:absolute;top:5px;right:5px;padding:11px;color:#fff;background-color:#EC008C;width:40px;height:40px;z-index:9;border-radius:50%}
+.icon-content-type{position:absolute;top:5px;right:5px;padding:11px;color:#fff;background-color:#d80023;width:40px;height:40px;z-index:9;border-radius:50%}
 .clear{clear:both}
 @-webkit-keyframes spin {
 0%{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}
@@ -1608,7 +1617,7 @@ input[type=search].search-input{-webkit-appearance:none;-webkit-border-radius:0;
 .nav-menu-link:hover .nav-menu{display:none!important}
 .nav-menu-link:hover .nav-menu-social .nav-submenu{display:block!important}
 .ng-failed-lazyloaded{height:100%!important}
-.icon-content-type{position:absolute;top:5px;right:5px;padding:11px;color:#fff;background-color:#EC008C;width:40px;height:40px;z-index:9;border-radius:50%}
+.icon-content-type{position:absolute;top:5px;right:5px;padding:11px;color:#fff;background-color:#d80023;width:40px;height:40px;z-index:9;border-radius:50%}
 .clear{clear:both}
 .load-more{position:relative;background:#fff;width:100%;min-height:80px;cursor:pointer;text-align:center}
 .load-more .load-more--icons{position:absolute;left:50%;margin-left:-40px;top:0;height:40px;width:80px;border-radius:0 0 80px 80px;background:#fff}
@@ -1626,7 +1635,7 @@ input[type=search].search-input{-webkit-appearance:none;-webkit-border-radius:0;
 0%{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}
 100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}
 }
-.load-more .load-more-label{padding:11px 3%;top:19px;left:0;right:0;margin:0 auto;border:1px solid #ec008c;width:307px;color:#080808}
+.load-more .load-more-label{padding:11px 3%;top:19px;left:0;right:0;margin:0 auto;border:1px solid #d80023;width:307px;color:#080808}
 .load-more .load-more--icons{top:21px}
 .youtube_iframe{width:calc(100% - 20px);height:calc((100vw - 20px) * 0.5625)}
 @media only screen and (min-width: 40.625rem) and (max-width:47.9375rem) and (orientation:landscape) {
@@ -1669,7 +1678,7 @@ input[type=search].search-input{-webkit-appearance:none;-webkit-border-radius:0;
 .icon-menu svg{
   height: 32px;
   width: 32px;
-  fill:#EC008C;
+  fill:#d80023;
 }
 .icon-close01::before{
   display: none;
@@ -1679,7 +1688,7 @@ input[type=search].search-input{-webkit-appearance:none;-webkit-border-radius:0;
  width:20px;
 }
 .menu-logo li a.active-link, .menu-logo li a:hover{
-  color:#ec008c;
+  color:#d80023;
 }
 .closesarch svg{
   height:30px;
@@ -1770,7 +1779,7 @@ input[type=search].search-input{-webkit-appearance:none;-webkit-border-radius:0;
   display: block;
 }
 .ct-unit-title:hover, .editorial-link-item-title:hover, .embed-related-content .item-title.recirculation-module-item-title:hover, .end-of-content-title:hover, .end-of-content-title a:hover, .footer a:hover, .recirculation-module-feed-link:hover, .recirculation-module-item-title:hover, .search-overlay-autosuggest-list a:hover, .search-overlay-inner .search-overlay-close-button:hover, .seo-tag .seo-link:hover, .sidepanel-close-button:hover, .syndicate-source-link a:hover, .transporter-hed:hover, a[class].body-btn-link:hover, a[class].product-btn-link:hover {
-  color: #e9328c;
+  color: #d80023;
 }
 .standard-body{
   width: calc(100% - 382px);
